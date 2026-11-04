@@ -69,3 +69,21 @@ Sample report includes:
 -Timing metrics
 -Requirement coverage
 
+
+## Suite validada
+
+La ejecucion incluye 9 casos: acceso valido e invalido, usuario o clave vacios,
+usuario bloqueado, agregar productos, carrito vacio, eliminar un producto y compra completa.
+Se verifican nombres, cantidades, subtotal y confirmacion de compra.
+El caso de carrito vacio valida su contenido; no afirma que el sitio bloquee el checkout.
+
+```powershell
+mvn clean verify -Dheadless.mode=true
+mvn clean verify -Dheadless.mode=true "-Dcucumber.filter.tags=@Login"
+mvn clean verify -Dheadless.mode=true "-Dcucumber.filter.tags=@Products"
+```
+
+Se utiliza Firefox por defecto y Selenium Manager descarga el navegador/driver si es necesario.
+Se necesita acceso a Internet y JDK 23. El reporte queda en `target/site/serenity/index.html`.
+En este equipo Maven tambien esta disponible en:
+`C:\Program Files\NetBeans-15\netbeans\java\maven\bin\mvn.cmd`.

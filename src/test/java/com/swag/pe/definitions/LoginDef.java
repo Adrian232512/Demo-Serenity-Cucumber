@@ -18,7 +18,7 @@ public class LoginDef {
     ValidationStep validate;
     @Given("el usuario navega al sitio web")
     public void userNavigateTo(){
-    url.navigateTo("https://www.saucedemo.com/v1/index.html");
+    url.navigateTo("https://www.saucedemo.com/");
     }
     @When("ingresa credenciales validas")
     public void userLoginWthValidCredentials(){
@@ -41,4 +41,14 @@ public class LoginDef {
         Assert.assertTrue(validate.errorMessageIsDisplayed());
     }
 
+    @When("ingresa el usuario {string} y la clave {string}")
+    public void loginWith(String username, String password) {
+        login.typeUsername(username);
+        login.typePassword(password);
+        login.clickLogin();
+    }
+    @Then("el mensaje de error indica {string}")
+    public void verifyError(String expected) {
+        Assert.assertEquals(expected, validate.errorMessageText());
+    }
 }

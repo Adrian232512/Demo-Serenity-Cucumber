@@ -12,3 +12,12 @@ Feature: CP01- Validar inicio de sesion
         When ingresa credenciales invalidas
         Then la aplicacion deberia mostrar un mensaje de error
 
+
+  Scenario Outline: Rechazar credenciales incompletas y usuario bloqueado
+    When ingresa el usuario "<usuario>" y la clave "<clave>"
+    Then el mensaje de error indica "<mensaje>"
+    Examples:
+      | usuario         | clave        | mensaje                                             |
+      |                 | secret_sauce | Epic sadface: Username is required                   |
+      | standard_user   |              | Epic sadface: Password is required                   |
+      | locked_out_user | secret_sauce | Epic sadface: Sorry, this user has been locked out.  |

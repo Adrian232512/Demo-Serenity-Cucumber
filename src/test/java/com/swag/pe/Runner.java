@@ -7,8 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
         features = "src/test/resources/features",
-        glue="com.swag.pe.definitions",
-        tags="@Login"
+        glue="com.swag.pe.definitions"
 )
 public class Runner {
 }
